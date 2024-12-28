@@ -15,36 +15,44 @@ export default function AdminDashboard() {
   const router = useRouter();
   const [recipes, setRecipes] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
+
   useEffect(() => {
-    const loadRecipes = () => {
-      const storedRecipes = localStorage.getItem('recipes');
-      if (storedRecipes) {
-        setRecipes(JSON.parse(storedRecipes));
-      }
-    };
-  const adminStatus = localStorage.getItem('isAdmin');
+    const adminStatus = sessionStorage.getItem('isAdmin');
     if (!adminStatus) {
       router.push('/admin/login');
     } else {
       setIsAdmin(true);
       loadRecipes();
     }
-  window.addEventListener('storage', loadRecipes);
-  return () => {
-      window.removeEventListener('storage', loadRecipes);
+
+    const handleStorageChange = () => {
+      loadRecipes();
     };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, [router]);
+
+  const loadRecipes = () => {
+    const storedRecipes = localStorage.getItem('recipes');
+    if (storedRecipes) {
+      setRecipes(JSON.parse(storedRecipes));
+    }
+  };
+
   const handleDeleteRecipe = (id) => {
     const updatedRecipes = recipes.filter(recipe => recipe.id !== id);
     setRecipes(updatedRecipes);
     localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
     window.dispatchEvent(new Event('storage'));
   };
+
   const handleLogout = () => {
-    localStorage.removeItem('isAdmin');
+    sessionStorage.removeItem('isAdmin');
     window.dispatchEvent(new Event('adminLogout'));
     router.push('/');
   };
+
   if (!isAdmin) return null;
   return (
     <div>

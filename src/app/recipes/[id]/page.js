@@ -36,11 +36,6 @@ export default function RecipeDetails() {
           />
         </div>
         <div className={`${body.className} p-8`}>
-          <div className="mb-8">
-            <p className="text-gray-600 text-lg">
-              Cooking Time: {recipe.cookingTime} minutes
-            </p>
-          </div>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Ingredients</h2>

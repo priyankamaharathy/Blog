@@ -25,7 +25,7 @@ export default function UploadRecipe() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const adminStatus = localStorage.getItem('isAdmin');
+    const adminStatus = sessionStorage.getItem('isAdmin');
     if (!adminStatus) {
       router.push('/admin/login');
     } else {
@@ -65,9 +65,10 @@ export default function UploadRecipe() {
         id: Date.now(),
         image: preview
       };
-      recipes.unshift(newRecipe);
-      localStorage.setItem('recipes', JSON.stringify(recipes));
+      const updatedRecipes = [newRecipe, ...recipes];
+      localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
       window.dispatchEvent(new Event('storage'));
+      window.dispatchEvent(new Event('recipeAdded'));
       router.push('/admin/dashboard');
     } catch (error) {
       console.error('Error uploading recipe:', error);

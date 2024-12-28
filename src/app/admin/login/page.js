@@ -1,13 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Great_Vibes, Raleway } from 'next/font/google';
-
-const heading = Great_Vibes({ 
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 const body = Raleway({ 
   subsets: ['latin'],
@@ -17,19 +11,27 @@ const body = Raleway({
 
 export default function AdminLogin() {
   const router = useRouter();
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const isAdmin = sessionStorage.getItem('isAdmin');
+    if (isAdmin) {
+      router.push('/admin/dashboard');
+    }
+  }, [router]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (credentials.username === 'admin' && credentials.password === 'admin123') {
-      localStorage.setItem('isAdmin', 'true');
-      window.dispatchEvent(new Event('storage'));
+    if (password === 'admin123') {
+      sessionStorage.setItem('isAdmin', 'true');
+      window.dispatchEvent(new Event('adminLogin'));
       router.push('/admin/dashboard');
     } else {
-      setError('Invalid credentials');
+      setError('Invalid password');
     }
   };
+
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow py-16 px-8 flex items-center justify-center">
@@ -45,26 +47,14 @@ export default function AdminLogin() {
           )}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="username" className={`${body.className} block text-gray-800 mb-2`}>
-                Username
-              </label>
-              <input
-                type="text"
-                id="username"
-                value={credentials.username}
-                onChange={(e) => setCredentials(prev => ({ ...prev, username: e.target.value }))}
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
-                required
-              /></div>
-            <div>
               <label htmlFor="password" className={`${body.className} block text-gray-800 mb-2`}>
                 Password
               </label>
               <input
                 type="password"
                 id="password"
-                value={credentials.password}
-                onChange={(e) => setCredentials(prev => ({ ...prev, password: e.target.value }))}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
                 required
               /></div>
