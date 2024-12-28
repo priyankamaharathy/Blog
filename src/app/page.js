@@ -58,8 +58,9 @@ export default function Home() {
   const featuredRecipe = recipes[0];
   const topThreeRecipes = recipes.slice(1, 4);
   const remainingRecipes = recipes.slice(4);
-
-  return (
+  const longRecipe = recipes[4]; 
+  
+return (
     <main className="flex-grow">
       <section className="max-w-7xl mx-auto px-8 py-16">
         <h1 className={`${body.className} text-4xl md:text-5xl text-center mb-16 text-gray-800`}>
