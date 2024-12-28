@@ -1,7 +1,7 @@
 A Next.js application for sharing delicious food recipes. Admin users can log in to manage and share recipes, which are displayed on the home page for everyone to explore. 
 Deployed seamlessly on Vercel.
 
-# Admin Login: Secure login for admins to manage recipes.
+**Admin Login**: Secure login for admins to manage recipes.
 Recipe Management: Admins can add, edit, and delete recipes.
 Home Page Display: All shared recipes are displayed attractively on the home page.
 Responsive Design: Optimized for desktop and mobile devices.
