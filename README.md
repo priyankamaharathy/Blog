@@ -8,9 +8,9 @@ Deployed seamlessly on Vercel.
 **Fast and Scalable**: Built with Next.js for server-side rendering (SSR) and static site generation (SSG).<br />
 **Deployed on Vercel**: Ensures smooth performance and quick deployment.
 
-**Framework**: Next.js
-**Styling**: Tailwind CSS (or mention your preferred CSS framework)
-**Authentication**: NextAuth.js
+**Framework**: Next.js<br />
+**Styling**: Tailwind CSS (or mention your preferred CSS framework)<br />
+**Authentication**: NextAuth.js<br />
 **Deployment**: Vercel
 
 ## Live Link
