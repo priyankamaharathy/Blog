@@ -1,32 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A Next.js application for sharing delicious food recipes. Admin users can log in to manage and share recipes, which are displayed on the home page for everyone to explore. 
+Deployed seamlessly on Vercel.
 
-## Getting Started
+Admin Login: Secure login for admins to manage recipes.
+Recipe Management: Admins can add, edit, and delete recipes.
+Home Page Display: All shared recipes are displayed attractively on the home page.
+Responsive Design: Optimized for desktop and mobile devices.
+Fast and Scalable: Built with Next.js for server-side rendering (SSR) and static site generation (SSG).
+Deployed on Vercel: Ensures smooth performance and quick deployment.
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Framework: Next.js
+Styling: Tailwind CSS (or mention your preferred CSS framework)
+Authentication: NextAuth.js
+Deployment: Vercel
 
 ## Live Link
 https://recipesblog.vercel.app/
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 https://github.com/user-attachments/assets/c2c4de68-2bd2-4497-831c-7bc2b3d94c61
 
